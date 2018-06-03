@@ -1,0 +1,17 @@
+version: '3.5'
+
+services:
+  gitlab-runner:
+    build: .
+    volumes:
+      - runner1-etc:/etc/gitlab-runner
+      - runner1-home:/home/gitlab-runner
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - GITLAB_URL=http://gitlab.com
+      - REGISTRATION_TOKEN=NONE
+      - DESCRIPTION=Test
+
+volumes:
+  runner1-etc:
+  runner1-home:
