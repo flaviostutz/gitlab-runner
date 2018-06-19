@@ -8,8 +8,8 @@ services:
       - runner1-home:/home/gitlab-runner
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
-      - GITLAB_URL=http://gitlab.com
-      - REGISTRATION_TOKEN=NONE
+      - GITLAB_URL=https://gitlab.com
+      - REGISTRATION_TOKEN=bS5qKejUwzAkEno-LoxD
       - DESCRIPTION=Test
 
 volumes:

@@ -6,7 +6,7 @@ if [ "$GITLAB_URL" == "" ] || [ "$REGISTRATION_TOKEN" == "" ] || [ "$DESCRIPTION
 
 elif [ ! -f /registered ]; then
     echo "Registering this runner on $GITLAB_URL with token $REGISTRATION_TOKEN and description $DESCRIPTION.."
-    gitlab-runner register -n \
+    gitlab-runner --debug register -n \
         --url $GITLAB_URL \
         --registration-token $REGISTRATION_TOKEN \
         --executor docker \
