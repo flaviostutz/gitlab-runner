@@ -8,4 +8,4 @@ services:
     environment:
       - GITLAB_URL=https://gitlab.com
       - REGISTRATION_TOKEN=[YOUR_TOKEN_HERE]
-      - DESCRIPTION=Testing
+      - DESCRIPTION=Testing description with space
