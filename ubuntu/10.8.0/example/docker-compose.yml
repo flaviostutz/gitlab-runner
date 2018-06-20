@@ -7,5 +7,5 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
       - GITLAB_URL=https://gitlab.com
-      - REGISTRATION_TOKEN=[YOUR_TOKEN_HERE]
+      - REGISTRATION_TOKEN=YOUR_GITLAB_RUNNER_TOKEN_HERE
       - DESCRIPTION=Testing description with space
