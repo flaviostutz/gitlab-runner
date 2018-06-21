@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ "$GITLAB_URL" == "" ] || [ "$REGISTRATION_TOKEN" == "" ] || [ "$DESCRIPTION" == "" ]; then
+if [ "$GITLAB_URL" == "" ] || [ "$REGISTRATION_TOKEN" == "" ] || [ "$NAME" == "" ]; then
     echo "ERROR: You have to specify GITLAB_URL, REGISTRATION_TOKEN and DESCRIPTION environment variables for this container to run"
     exit 1
 
@@ -11,7 +11,6 @@ elif [ ! -f /registered ]; then
         --registration-token $REGISTRATION_TOKEN \
         --executor docker \
         --name "$NAME" \
-        --description "$NAME" \
         --tag-list "$TAG_LIST" \
         --docker-image "tmaier/docker-compose:latest" \
         --docker-volumes /var/run/docker.sock:/var/run/docker.sock
