@@ -1,11 +1,11 @@
 #!/bin/bash
 
 if [ "$GITLAB_URL" == "" ] || [ "$REGISTRATION_TOKEN" == "" ] || [ "$NAME" == "" ]; then
-    echo "ERROR: You have to specify GITLAB_URL, REGISTRATION_TOKEN and DESCRIPTION environment variables for this container to run"
+    echo "ERROR: You have to specify GITLAB_URL, REGISTRATION_TOKEN and NAME environment variables for this container to run"
     exit 1
 
 elif [ ! -f /registered ]; then
-    echo "Registering this runner on $GITLAB_URL with token $REGISTRATION_TOKEN and description $DESCRIPTION.."
+    echo "Registering this runner on $GITLAB_URL with token $REGISTRATION_TOKEN and description $NAME.."
     gitlab-runner --debug register -n \
         --url $GITLAB_URL \
         --registration-token $REGISTRATION_TOKEN \
@@ -29,7 +29,7 @@ pid=0 #init var
 # SIGTERM-handler to unregister de gitlab-runner
 shutdown_handler() {
     echo "GOOD BYE"
-    gitlab-runner unregister -n "$DESCRIPTION"
+    gitlab-runner unregister -n "$NAME"
 }
 # catch the sigterm and unregister the runner
 trap 'shutdown_handler' SIGTERM
