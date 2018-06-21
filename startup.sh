@@ -11,6 +11,7 @@ elif [ ! -f /registered ]; then
         --registration-token $REGISTRATION_TOKEN \
         --executor docker \
         --name "$NAME" \
+        --description "$NAME" \
         --tag-list "$TAG_LIST" \
         --docker-image "tmaier/docker-compose:latest" \
         --docker-volumes /var/run/docker.sock:/var/run/docker.sock
