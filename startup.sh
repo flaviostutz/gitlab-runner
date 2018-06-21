@@ -11,7 +11,7 @@ elif [ ! -f /registered ]; then
         --registration-token $REGISTRATION_TOKEN \
         --executor docker \
         --description "$DESCRIPTION" \
-        --docker-image "docker:stable" \
+        --docker-image "tmaier/docker-compose:latest" \
         --docker-volumes /var/run/docker.sock:/var/run/docker.sock
 
     EXIT_CODE=$?
