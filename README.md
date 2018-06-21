@@ -15,5 +15,6 @@ services:
     environment:
       - GITLAB_URL=https://gitlab.com
       - REGISTRATION_TOKEN=[YOUR_TOKEN_HERE]
-      - DESCRIPTION=Testing description with space
+      - NAME=Testing name with space
+      - TAG_LIST=tag-1,tag-2
 ``` 

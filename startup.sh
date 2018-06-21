@@ -10,7 +10,7 @@ elif [ ! -f /registered ]; then
         --url $GITLAB_URL \
         --registration-token $REGISTRATION_TOKEN \
         --executor docker \
-        --description "$DESCRIPTION" \
+        --name "$NAME" \
         --tag-list "$TAG_LIST" \
         --docker-image "tmaier/docker-compose:latest" \
         --docker-volumes /var/run/docker.sock:/var/run/docker.sock
