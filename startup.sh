@@ -11,6 +11,7 @@ elif [ ! -f /registered ]; then
         --registration-token $REGISTRATION_TOKEN \
         --executor docker \
         --description "$DESCRIPTION" \
+        --tag-list "$TAG_LIST" \
         --docker-image "tmaier/docker-compose:latest" \
         --docker-volumes /var/run/docker.sock:/var/run/docker.sock
 
@@ -23,5 +24,22 @@ elif [ ! -f /registered ]; then
     fi
 fi
 
+
+pid=0 #init var
+# SIGTERM-handler to unregister de gitlab-runner
+shutdown_handler() {
+    echo "GOOD BYE"
+    gitlab-runner unregister -n "$DESCRIPTION"
+}
+# catch the sigterm and unregister the runner
+trap 'shutdown_handler' SIGTERM
+
+# starts the gitlab runner as a "secondary" proccess because it should be down when we unregister it in the SIGTERM handler
 echo "Starting Gitlab Runner..."
-/usr/bin/dumb-init /entrypoint run --user=gitlab-runner --working-directory=/home/gitlab-runner
+
+/usr/bin/dumb-init /entrypoint run --user=gitlab-runner --working-directory=/home/gitlab-runner & 
+
+while true
+do
+  tail -f /dev/null & wait "$!"
+done
