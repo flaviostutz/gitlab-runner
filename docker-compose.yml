@@ -1,17 +1,7 @@
 version: '3.5'
 
+# this docker-compose file is used only to build the image. To run, check the docker-compose.yml in the example folder
 services:
   gitlab-runner:
+    image: flaviostutz/gitlab-runner:ubuntu-v10.8.0
     build: .
-    volumes:
-      - runner1-etc:/etc/gitlab-runner
-      - runner1-home:/home/gitlab-runner
-      - /var/run/docker.sock:/var/run/docker.sock
-    environment:
-      - GITLAB_URL=http://gitlab.com
-      - REGISTRATION_TOKEN=NONE
-      - DESCRIPTION=Test
-
-volumes:
-  runner1-etc:
-  runner1-home:

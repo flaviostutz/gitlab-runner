@@ -9,17 +9,12 @@ version: '3.5'
 
 services:
   gitlab-runner:
-    image: flaviostutz/gitlab-runner
+    image: flaviostutz/gitlab-runner:ubuntu-v10.8.0
     volumes:
-      - runner1-etc:/etc/gitlab-runner
-      - runner1-home:/home/gitlab-runner
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
-      - GITLAB_URL=http://gitlab.com
-      - REGISTRATION_TOKEN=##YOURTOKENHERE##
-      - DESCRIPTION=My Runner
-
-volumes:
-  runner1-etc:
-  runner1-home:
+      - GITLAB_URL=https://gitlab.com
+      - REGISTRATION_TOKEN=[YOUR_TOKEN_HERE]
+      - NAME=Testing name with space
+      - TAG_LIST=tag-1,tag-2
 ``` 
