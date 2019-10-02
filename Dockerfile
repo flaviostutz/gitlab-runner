@@ -1,4 +1,5 @@
-FROM gitlab/gitlab-runner:ubuntu-v10.8.0
+ARG VERSION=ubuntu
+FROM gitlab/gitlab-runner:${VERSION}
 
 ENV GITLAB_URL ""
 ENV REGISTRATION_TOKEN ""
