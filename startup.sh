@@ -5,14 +5,19 @@ if [ "$GITLAB_URL" == "" ] || [ "$REGISTRATION_TOKEN" == "" ] || [ "$NAME" == ""
     exit 1
 
 elif [ ! -f /registered ]; then
-    echo "Registering this runner on $GITLAB_URL with token $REGISTRATION_TOKEN and description $NAME.."
+
+    if ["$DOCKER_IMAGE" == ""]; then
+        DOCKER_IMAGE="tmaier/docker-compose:latest"
+    fi
+
+    echo "Registering this runner with docker-image $DOCKER_IMAGE on $GITLAB_URL with token $REGISTRATION_TOKEN and description $NAME.."
     gitlab-runner --debug register -n \
         --url $GITLAB_URL \
         --registration-token $REGISTRATION_TOKEN \
         --executor docker \
         --name "$NAME" \
         --tag-list "$TAG_LIST" \
-        --docker-image "tmaier/docker-compose:latest" \
+        --docker-image "$DOCKER_IMAGE" \
         --docker-volumes /var/run/docker.sock:/var/run/docker.sock
 
     EXIT_CODE=$?
