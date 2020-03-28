@@ -1,4 +1,4 @@
-FROM gitlab/gitlab-runner:ubuntu-v10.8.0
+FROM gitlab/gitlab-runner:ubuntu-v12.9.0
 
 ENV GITLAB_URL ""
 ENV REGISTRATION_TOKEN ""
