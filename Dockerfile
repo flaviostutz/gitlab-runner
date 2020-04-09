@@ -1,5 +1,7 @@
 FROM gitlab/gitlab-runner:ubuntu-v12.9.0
 
+RUN apt-get update && apt-get install -y curl
+
 ENV GITLAB_URL ""
 ENV REGISTRATION_TOKEN ""
 ENV DESCRIPTION ""
