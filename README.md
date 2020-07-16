@@ -1,4 +1,8 @@
 # gitlab runner
+
+[<img src="https://img.shields.io/docker/pulls/flaviostutz/gitlab-runner"/>](https://hub.docker.com/r/flaviostutz/gitlab-runner)
+[<img src="https://img.shields.io/docker/automated/flaviostutz/gitlab-runner"/>](https://hub.docker.com/r/flaviostutz/gitlab-runner)
+
 This is an extension of official Gitlab Runner container that uses environment properties to register the container on startup.
 
 ### Usage
