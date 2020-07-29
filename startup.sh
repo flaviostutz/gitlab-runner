@@ -18,7 +18,8 @@ elif [ ! -f /registered ]; then
         --name "$NAME" \
         --tag-list "$TAG_LIST" \
         --docker-image "$DOCKER_IMAGE" \
-        --docker-volumes /var/run/docker.sock:/var/run/docker.sock
+        --docker-volumes /var/run/docker.sock:/var/run/docker.sock \
+        --docker-volumes "$DATA_VOLUME"
 
     EXIT_CODE=$?
     if [ $EXIT_CODE == 0 ]; then
