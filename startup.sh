@@ -6,14 +6,14 @@ if [ "$GITLAB_URL" == "" ] || [ "$REGISTRATION_TOKEN" == "" ] || [ "$NAME" == ""
 
 elif [ ! -f /registered ]; then
 
-    if ["$DOCKER_IMAGE" == ""]; then
+    if [ "$DOCKER_IMAGE" == "" ]; then
         DOCKER_IMAGE="tmaier/docker-compose:latest"
     fi
 
     echo "Registering this runner with docker-image $DOCKER_IMAGE on $GITLAB_URL with token $REGISTRATION_TOKEN and description $NAME.."
     gitlab-runner --debug register -n \
-        --url $GITLAB_URL \
-        --registration-token $REGISTRATION_TOKEN \
+        --url "$GITLAB_URL" \
+        --registration-token "$REGISTRATION_TOKEN" \
         --executor docker \
         --name "$NAME" \
         --tag-list "$TAG_LIST" \
