@@ -13,7 +13,7 @@ version: '3.5'
 
 services:
   gitlab-runner:
-    image: flaviostutz/gitlab-runner:ubuntu-v10.8.0
+    image: flaviostutz/gitlab-runner
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
