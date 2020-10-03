@@ -26,7 +26,7 @@ elif [ ! -f /registered ]; then
         --executor docker \
         --name "$NAME" \
         --tag-list "$TAG_LIST" \
-        --docker-image "tmaier/docker-compose:19.03" \
+        --docker-image "flaviostutz/docker-compose:19.03" \
         --docker-volumes /var/run/docker.sock:/var/run/docker.sock
 
     EXIT_CODE=$?
