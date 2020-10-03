@@ -1,4 +1,4 @@
-FROM gitlab/gitlab-runner:ubuntu-v12.9.0
+FROM gitlab/gitlab-runner:ubuntu-v13.2.4
 
 RUN apt-get update && apt-get install -y curl
 

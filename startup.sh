@@ -1,5 +1,19 @@
 #!/bin/bash
 
+echo "==============="
+echo ""
+
+echo "DOCKER INFO"
+docker info
+
+echo ""
+
+echo "DOCKER COMPOSE VERSION"
+docker-compose --version
+
+echo ""
+echo "==============="
+
 if [ "$GITLAB_URL" == "" ] || [ "$REGISTRATION_TOKEN" == "" ] || [ "$NAME" == "" ]; then
     echo "ERROR: You have to specify GITLAB_URL, REGISTRATION_TOKEN and NAME environment variables for this container to run"
     exit 1
@@ -12,7 +26,7 @@ elif [ ! -f /registered ]; then
         --executor docker \
         --name "$NAME" \
         --tag-list "$TAG_LIST" \
-        --docker-image "tmaier/docker-compose:latest" \
+        --docker-image "tmaier/docker-compose:19.03" \
         --docker-volumes /var/run/docker.sock:/var/run/docker.sock
 
     EXIT_CODE=$?
