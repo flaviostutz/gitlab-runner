@@ -15,8 +15,7 @@ elif [ ! -f /registered ]; then
         --docker-privileged \
         --name "$NAME" \
         --tag-list "$TAG_LIST" \
-        --docker-image "flaviostutz/docker-compose:19.03" \
-        --docker-volumes /var/run/docker.sock:/var/run/docker.sock
+        --docker-image "flaviostutz/docker-compose:19.03"
 
     EXIT_CODE=$?
     if [ $EXIT_CODE == 0 ]; then
