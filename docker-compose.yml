@@ -1,7 +1,6 @@
 version: '3.5'
 
-# this docker-compose file is used only to build the image. To run, check the docker-compose.yml in the example folder
 services:
   gitlab-runner:
-    image: flaviostutz/gitlab-runner:ubuntu-v10.8.0
+    image: flaviostutz/gitlab-runner
     build: .
