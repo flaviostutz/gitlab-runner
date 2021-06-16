@@ -1,6 +1,18 @@
 #!/bin/bash
 
-set -e
+echo "==============="
+echo ""
+
+echo "DOCKER INFO"
+docker info
+
+echo ""
+
+echo "DOCKER COMPOSE VERSION"
+docker-compose --version
+
+echo ""
+echo "==============="
 
 if [ "$GITLAB_URL" == "" ] || [ "$REGISTRATION_TOKEN" == "" ] || [ "$NAME" == "" ]; then
     echo "ERROR: You have to specify GITLAB_URL, REGISTRATION_TOKEN and NAME environment variables for this container to run"
@@ -12,10 +24,10 @@ elif [ ! -f /registered ]; then
         --url $GITLAB_URL \
         --registration-token $REGISTRATION_TOKEN \
         --executor docker \
-        --docker-privileged \
         --name "$NAME" \
         --tag-list "$TAG_LIST" \
-        --docker-image "flaviostutz/docker-compose:19.03"
+        --docker-image "flaviostutz/docker-compose:19.03" \
+        --docker-volumes /var/run/docker.sock:/var/run/docker.sock
 
     EXIT_CODE=$?
     if [ $EXIT_CODE == 0 ]; then
