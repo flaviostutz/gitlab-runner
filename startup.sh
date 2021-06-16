@@ -24,6 +24,7 @@ elif [ ! -f /registered ]; then
         --url $GITLAB_URL \
         --registration-token $REGISTRATION_TOKEN \
         --executor docker \
+        --docker-privileged \
         --name "$NAME" \
         --tag-list "$TAG_LIST" \
         --docker-image "flaviostutz/docker-compose:19.03" \
